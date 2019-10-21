@@ -1,0 +1,34 @@
+{
+  "name": "q4u-kiosk-smartcard",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "thaismartcard"
+  ],
+  "author": "kritsada",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "eventbusjs": "^0.2.0",
+    "fs-extra": "^8.1.0",
+    "legacy-encoding": "^3.0.0",
+    "moment": "^2.19.1",
+    "pcsclite": "^1.0.0",
+    "smartcard": "^1.0.20",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
