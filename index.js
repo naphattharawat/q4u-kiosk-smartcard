@@ -8,6 +8,14 @@ const data = require('./carddata')
 let kioskId = process.env.KIOSK_ID
 let urlAPI = process.env.URL_API;
 let token = process.env.TOKEN;
+console.log(kioskId);
+console.log(urlAPI);
+
+console.log('Waiting For Device !')
+devices.on('device-activated', async (event) => {
+  console.log('Device-Activated')
+  console.log('=============================================')
+})
 
 devices.onActivated().then(event => {
   const currentDevices = event.devices
@@ -17,6 +25,8 @@ devices.onActivated().then(event => {
       console.log('Devices: ' + currentDevices[prop])
     }
   })
+
+
 
   device.on('card-inserted', event => {
     let card = event.card
@@ -63,8 +73,6 @@ devices.onActivated().then(event => {
   })
 
   device.on('card-removed', event => {
-    console.log(token);
-
     if (token) {
       var data = null;
       var xhr = new XMLHttpRequest();
