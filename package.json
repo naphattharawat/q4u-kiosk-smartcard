@@ -20,6 +20,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "eventbusjs": "^0.2.0",
     "fs-extra": "^8.1.0",
     "legacy-encoding": "^3.0.0",
