@@ -45,21 +45,24 @@ fse.readJson('./config.json')
             console.log(`THName: ${thName.prefix} ${thName.firstname} ${thName.lastname}`)
             console.log(`DOB: ${dob}`)
             console.log('=============================================')
+            console.log(token);
 
-            var xhr = new XMLHttpRequest();
-            var data = `token=${token}&kioskId=${kioskId}`;
-            data += `&cid=${cid}`;
-            data += `&title=${thName.prefix}`;
-            data += `&fname=${thName.firstname}`;
-            data += `&lname=${thName.lastname}`;
-            data += `&birthDate=${dob}`;
-            xhr.withCredentials = true;
+            if (token) {
+              var xhr = new XMLHttpRequest();
+              var data = `token=${token}&kioskId=${kioskId}`;
+              data += `&cid=${cid}`;
+              data += `&title=${thName.prefix}`;
+              data += `&fname=${thName.firstname}`;
+              data += `&lname=${thName.lastname}`;
+              data += `&birthDate=${dob}`;
+              xhr.withCredentials = true;
 
-            xhr.open("POST", `${urlAPI}/kiosk/profile`);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.setRequestHeader("cache-control", "no-cache");
-            xhr.setRequestHeader("Postman-Token", "6e874932-931e-4dd6-9ae2-c6788825d247");
-            xhr.send(data);
+              xhr.open("POST", `${urlAPI}/kiosk/profile`);
+              xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+              xhr.setRequestHeader("cache-control", "no-cache");
+              xhr.setRequestHeader("Postman-Token", "6e874932-931e-4dd6-9ae2-c6788825d247");
+              xhr.send(data);
+            }
           })
         }).catch(error => {
           console.error('Error:', error, error.stack)
@@ -67,13 +70,17 @@ fse.readJson('./config.json')
       })
 
       device.on('card-removed', event => {
-        var data = null;
-        var xhr = new XMLHttpRequest();
-        var data = `token=${token}&kioskId=${kioskId}`;
-        xhr.withCredentials = true;
-        xhr.open("DELETE", `${urlAPI}/kiosk/profile`);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send(data);
+        console.log(token);
+
+        if (token) {
+          var data = null;
+          var xhr = new XMLHttpRequest();
+          var data = `token=${token}&kioskId=${kioskId}`;
+          xhr.withCredentials = true;
+          xhr.open("DELETE", `${urlAPI}/kiosk/profile`);
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhr.send(data);
+        }
         console.log('== card remove ==')
       })
     })
